@@ -13,10 +13,17 @@ Mirrors Anthropic's native ``compact_20260112`` for non-Anthropic providers:
 """
 
 import re
+import sys
 from collections.abc import Mapping, Sequence
-from typing import TYPE_CHECKING, Any, Final, Literal, NotRequired, Optional, TypedDict, Union, cast
+from typing import TYPE_CHECKING, Any, Final, Literal, Optional, TypedDict, Union, cast
 
 from typing_extensions import ReadOnly
+
+if TYPE_CHECKING or sys.version_info >= (3, 11):
+    from typing import NotRequired
+else:
+    from typing_extensions import NotRequired
+
 
 import litellm
 from litellm._logging import verbose_logger
